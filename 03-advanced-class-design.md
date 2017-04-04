@@ -40,3 +40,41 @@ enums:
 - construtor sempre private (se não colocar modificador ele considera private)
 - construtor só roda uma vez
 - aceita métodos abstratos
+
+final:
+- se uma variável tiver o mesmo comportamento de uma variável final, o Java considera como final (Java 8)
+
+Nested Class:
+- existem 4 tipos:
+    - member inner class (no mesmo level dos atributos)
+        - qualquer modificador de acesso
+        - pode usar extends e implements
+        - pode ser abstract ou final
+        - não pode declarar nada estático
+        - acessa qualquer coisa da classe que engloba ela
+        - cria um arquivo para cada classe na compilação
+        - variáveis membro usa o this que nem no Android pra acessar
+    - local inner class (dentro de um método)
+        - não tem modificador de acesso
+        - regra é a mesma de classe anônima
+    - anonymous inner class (local inner class mas sem nome)
+        - classe anônima padrão
+    - static nested class (no mesmo level das variáveis estáticas)
+        - a classe de fora consegue usar qualquer coisa da classe interna
+        - pode ser privada
+        - pode ser importada com static import
+        - classe estática pode ser herdada!
+            public class Teste {
+
+                String s;
+
+                static class Teste2 extends Teste {
+                    static String t;
+                }
+
+                public static void main(String[] args) {
+                    Teste.Teste2.Teste2.Teste2.Teste2.t = "foca";
+                }
+            }
+
+Private interfaces seguem a mesma regra de métodos de interface padrão
